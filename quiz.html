@@ -19,85 +19,130 @@
         </button>
       </section>
 
-      <!-- <section class="question-container">
-        <h3 class="question">Q: What is the capital of Ireland?</h3>
-        <button class="answer">A: Cork</button>
-        <button class="answer">B: Limerick</button>
-        <button class="answer">C: Dublin</button>
-        <button class="answer">D: Galway</button>
-      </section> -->
+      <div id="grid-questions-container">
+        <section id="irelandQ" class="question-container hidden">
+          <h3 class="question">Q: What is the capital of Ireland?</h3>
+          <button class="answer" onclick="answerIrelandQ()">A: Cork</button>
+          <button class="answer" onclick="answerIrelandQ()">B: Limerick</button>
+          <button class="answer" onclick="answerIrelandQ(); increaseScore()">
+            C: Dublin
+          </button>
+          <button class="answer" onclick="answerIrelandQ()">D: Galway</button>
+        </section>
 
-      <!-- <section class="questionContainer">
-        <h3 class="question">Question</h3>
-        <button class="answer"></button>
-        <button class="answer"></button>
-        <button class="answer"></button>
-        <button class="answer"></button>
-      </section>
+        <section id="belgiumQ" class="question-container hidden">
+          <h3 class="question">What is the capital of Belgium?</h3>
+          <button class="answer" onclick="answerBelgiumQ(); increaseScore()">
+            A: Brussels
+          </button>
+          <button class="answer" onclick="answerBelgiumQ()">B: Bruges</button>
+          <button class="answer" onclick="answerBelgiumQ()">C: Ghent</button>
+          <button class="answer" onclick="answerBelgiumQ()">
+            D: Belgium City
+          </button>
+        </section>
 
-      <section class="questionContainer">
-        <h3 class="question">Question</h3>
-        <button class="answer"></button>
-        <button class="answer"></button>
-        <button class="answer"></button>
-        <button class="answer"></button>
-      </section>
+        <section id="franceQ" class="question-container hidden">
+          <h3 class="question">What is the capital of France?</h3>
+          <button class="answer" onclick="answerFranceQ()">A: Marseille</button>
+          <button class="answer" onclick="answerFranceQ() ; increaseScore()">
+            B: Paris
+          </button>
+          <button class="answer" onclick="answerFranceQ()">C: Lyon</button>
+          <button class="answer" onclick="answerFranceQ()">
+            D: France City
+          </button>
+        </section>
 
-      <section class="questionContainer">
-        <h3 class="question">Question</h3>
-        <button class="answer"></button>
-        <button class="answer"></button>
-        <button class="answer"></button>
-        <button class="answer"></button>
-      </section>
+        <section id="spainQ" class="question-container hidden">
+          <h3 class="question">What is the capital of Spain?</h3>
+          <button class="answer" onclick="answerSpainQ() ; increaseScore()">
+            A: Madrid
+          </button>
+          <button class="answer" onclick="answerSpainQ()">B: Valencia</button>
+          <button class="answer" onclick="answerSpainQ()">C: Barcelona</button>
+          <button class="answer" onclick="answerSpainQ()">D: Spain City</button>
+        </section>
 
-      <section class="questionContainer">
-        <p class="question">Question</p>
-        <button class="answer"></button>
-        <button class="answer"></button>
-        <button class="answer"></button>
-        <button class="answer"></button>
-      </section>
+        <section id="italyQ" class="question-container hidden">
+          <h3 class="question">What is the capital of Italy?</h3>
+          <button class="answer" onclick="answerItalyQ()">A: Milan</button>
+          <button class="answer" onclick="answerItalyQ()">B: Naples</button>
+          <button class="answer" onclick="answerItalyQ() ; increaseScore()">
+            C: Rome
+          </button>
+          <button class="answer" onclick="answerItalyQ()">D: Italy City</button>
+        </section>
 
-      <section class="questionContainer">
-        <p class="question">Question</p>
-        <button class="answer"></button>
-        <button class="answer"></button>
-        <button class="answer"></button>
-        <button class="answer"></button>
-      </section>
+        <section id="romaniaQ" class="question-container hidden">
+          <h3 class="question">What is the capital of Romania?</h3>
+          <button class="answer" onclick="answerRomaniaQ()">A: Budapest</button>
+          <button class="answer" onclick="answerRomaniaQ() ; increaseScore()">
+            B: Bucharest
+          </button>
+          <button class="answer" onclick="answerRomaniaQ()">C: Brașov</button>
+          <button class="answer" onclick="answerRomaniaQ()">
+            D: Romania City
+          </button>
+        </section>
 
-      <section class="questionContainer">
-        <p class="question">Question</p>
-        <button class="answer"></button>
-        <button class="answer"></button>
-        <button class="answer"></button>
-        <button class="answer"></button>
-      </section>
+        <section id="cameroonQ" class="question-container hidden">
+          <h3 class="question">What is the capital of Cameroon?</h3>
+          <button class="answer" onclick="answerCameroonQ()">A: Bamenda</button>
+          <button class="answer" onclick="answerCameroonQ()">B: Douala</button>
+          <button class="answer" onclick="answerCameroonQ() ; increaseScore()">
+            C: Yaoundé
+          </button>
+          <button class="answer" onclick="answerCameroonQ()">
+            D: Cameroon City
+          </button>
+        </section>
 
-      <section class="questionContainer">
-        <p class="question">Question</p>
-        <button class="answer"></button>
-        <button class="answer"></button>
-        <button class="answer"></button>
-        <button class="answer"></button>
-      </section>
+        <section id="peruQ" class="question-container hidden">
+          <h3 class="question">What is the capital of Peru?</h3>
+          <button class="answer" onclick="answerPeruQ()">A: Bogota</button>
+          <button class="answer" onclick="answerPeruQ() ; increaseScore()">
+            B: Lima
+          </button>
+          <button class="answer" onclick="answerPeruQ()">C: La Paz</button>
+          <button class="answer" onclick="answerPeruQ()">D: Peru City</button>
+        </section>
 
-      <section class="questionContainer">
-        <p class="question">Question</p>
-        <button class="answer"></button>
-        <button class="answer"></button>
-        <button class="answer"></button>
-        <button class="answer"></button>
-      </section>
+        <section id="guatamalaQ" class="question-container hidden">
+          <h3 class="question">What is the capital of Guatamala?</h3>
+          <button class="answer" onclick="answerGuatamalaQ()">
+            A: Quetzaltenango
+          </button>
+          <button class="answer" onclick="answerGuatamalaQ()">
+            B: San Juan
+          </button>
+          <button class="answer" onclick="answerGuatamalaQ()">
+            C: Antigua
+          </button>
+          <button class="answer" onclick="answerGuatamalaQ(); increaseScore()">
+            D: Guatamala City
+          </button>
+        </section>
 
-      <section class="questionContainer">
-        <p class="question">Question</p>
-        <button class="answer"></button>
-        <button class="answer"></button>
-        <button class="answer"></button>
-        <button class="answer"></button>
-      </section> -->
+        <section id="nigeriaQ" class="question-container hidden">
+          <h3 class="question">What is the capital of Nigeria?</h3>
+          <button class="answer" onclick="answerNigeriaQ() ; increaseScore()">
+            A: Abuja
+          </button>
+          <button class="answer" onclick="answerNigeriaQ()">B: Lagos</button>
+          <button class="answer" onclick="answerNigeriaQ()">C: Ibadan</button>
+          <button class="answer" onclick="answerNigeriaQ()">
+            D: Benin City
+          </button>
+        </section>
+
+        <section id="game-over" class="question-container hidden">
+          <h2>Game Over</h2>
+          <button id="see-score" onclick="seeScore()">
+            <h3>See Your Score</h3>
+          </button>
+        </section>
+      </div>
     </div>
 
     <script src="quiz.js"></script>

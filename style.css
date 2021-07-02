@@ -13,7 +13,48 @@ body {
 }
 
 .ireland {
-  background: linear-gradient(0.25turn, #00db71, #ebf8e1, #f69d3c);
+  background: linear-gradient(to right, #00db71, #ebf8e1, #f69d3c);
+}
+
+.france {
+  background: linear-gradient(to right, blue, white, red);
+}
+
+.italy {
+  background: linear-gradient(to right, #00db71, white, red);
+}
+
+.spain {
+  background: linear-gradient(to right, red, yellow, red);
+}
+
+.belgium {
+  background: linear-gradient(to right, black, yellow, red);
+}
+
+.romania {
+  background: linear-gradient(to right, blue, yellow, red);
+}
+
+.cameroon {
+  background: linear-gradient(to right, rgb(37, 146, 113), red, yellow);
+}
+
+.peru {
+  background: linear-gradient(to right, red, white, red);
+}
+
+.guatamala {
+  background: linear-gradient(
+    to right,
+    rgb(0, 140, 255),
+    white,
+    rgb(0, 140, 255)
+  );
+}
+
+.nigeria {
+  background: linear-gradient(to right, #00db71, white, #00db71);
 }
 
 h1 {
@@ -36,6 +77,19 @@ h3 {
   width: 500px;
   margin: auto;
   margin-top: 100px;
+}
+
+#grid-questions-container {
+  display: grid;
+}
+
+.question-container {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 /* .question-container {
@@ -75,4 +129,17 @@ button#start h3 {
 
 button:active {
   box-shadow: -2px -3px black;
+}
+
+#game-over h2 {
+  font-size: 50px;
+}
+
+#game-over h3 {
+  font-size: 100px;
+}
+
+button#see-score h3 {
+  margin: auto;
+  font-size: medium;
 }
