@@ -9,7 +9,8 @@ body {
 }
 
 .welcome {
-  background: #00db71;
+  /* background: #00db71; */
+  background: #7b48b4;
 }
 
 .ireland {
@@ -111,7 +112,7 @@ button {
   border-style: solid;
   border-color: black;
   box-shadow: 2px 3px black;
-  background-color: #8efbcf;
+  background-color: #ccb2d8;
   padding: 10px;
   /* font-size: 1rem; */
   font-size: 17px;
