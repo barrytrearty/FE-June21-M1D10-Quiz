@@ -31,107 +31,10 @@ const guatemalaQ = document.getElementById("guatemalaQ");
 const nigeriaQ = document.getElementById("nigeriaQ");
 const gameOver = document.getElementById("game-over");
 const seeScoreButton = document.getElementById("see-score");
+// const questionContainer = document.getElementById("grid-questions-container");
 const questionContainer = document.getElementById("grid-questions-container");
 
 let score = 0;
-
-// const getCurrentlySelectedQuestion = function () {
-//   return document.querySelector(".selected");
-// };
-
-// const selectedQuestion = document.getElementsByClassName("selected")[]
-
-// const currentlySelectedQuestion = getCurrentlySelectedPhone() // Looking for any "selected" day in the page
-//   if (currentlySelectedPhoneNode !== null) { // If there is any selected day...
-//       currentlySelectedPhoneNode.classList.remove("selected") // ...we remove the "selected" class from it
-//   }
-
-const displayFirstQuestion = function () {
-  welcomePage.remove();
-  body.classList.remove("welcome");
-  body.classList.add("ireland");
-  irelandQ.classList.remove("hidden");
-};
-
-const answerIrelandQ = function () {
-  irelandQ.classList.add("hidden");
-  belgiumQ.classList.remove("hidden");
-  body.classList.remove("ireland");
-  body.classList.add("belgium");
-};
-
-const answerBelgiumQ = function () {
-  //1
-  belgiumQ.classList.add("hidden"); //1
-  franceQ.classList.remove("hidden"); //2
-  body.classList.remove("belgium"); //1
-  body.classList.add("france"); //2
-};
-
-const answerFranceQ = function () {
-  franceQ.classList.add("hidden");
-  spainQ.classList.remove("hidden");
-  body.classList.remove("france");
-  body.classList.add("spain");
-};
-
-const answerSpainQ = function () {
-  //1
-  spainQ.classList.add("hidden"); //1
-  italyQ.classList.remove("hidden"); //2
-  body.classList.remove("spain"); //1
-  body.classList.add("italy"); //2
-};
-
-const answerItalyQ = function () {
-  italyQ.classList.add("hidden");
-  romaniaQ.classList.remove("hidden");
-  body.classList.remove("italy");
-  body.classList.add("romania");
-};
-
-const answerRomaniaQ = function () {
-  //1
-  romaniaQ.classList.add("hidden"); //1
-  cameroonQ.classList.remove("hidden"); //2
-  body.classList.remove("romania"); //1
-  body.classList.add("cameroon"); //2
-};
-
-const answerCameroonQ = function () {
-  //1
-  cameroonQ.classList.add("hidden"); //1
-  peruQ.classList.remove("hidden"); //2
-  body.classList.remove("cameroon"); //1
-  body.classList.add("peru"); //2
-};
-
-const answerPeruQ = function () {
-  //1
-  peruQ.classList.add("hidden"); //1
-  guatamalaQ.classList.remove("hidden"); //2
-  body.classList.remove("peru"); //1
-  body.classList.add("guatamala"); //2
-};
-
-const answerGuatamalaQ = function () {
-  //1
-  guatamalaQ.classList.add("hidden"); //1
-  nigeriaQ.classList.remove("hidden"); //2
-  body.classList.remove("guatamala"); //1
-  body.classList.add("nigeria"); //2
-};
-
-const answerNigeriaQ = function () {
-  //1
-  nigeriaQ.classList.add("hidden"); //1 //2
-  gameOver.classList.remove("hidden"); //1
-  body.classList.remove("nigeria");
-  body.classList.add("welcome");
-  // const gameOverScore = document.createElement("h3");
-  // gameOverScore.innerHTML = `${score} / 10`;
-  // gameOver.appendChild(gameOverScore);
-};
 
 const seeScore = function () {
   seeScoreButton.remove();
@@ -147,37 +50,55 @@ const seeScore = function () {
 //   body.classList.add(""); //2
 // };
 
+// let correctQuestionAnswer = document.getElementsByClassName("correct")[0]
+// correctQuestionAnswer.addEventListener("click", increaseScore)
+
 const increaseScore = function () {
   score++;
   console.log(score);
 };
 
-const displayQuestion = function (object) {
-  body.classList = "";
-  body.classList.add(object.country);
-  let question = document.createElement("section");
+// let displayScore = function () {
+//   let score = document.querySelector(".score");
+//   if (score) {
+//     let displayedScore = document.createElement("h2");
+//     displayedScore.classList.add("score");
+//     displayedScore.innerText = `Score: ${score}`;
+//     questionContainer.appendChild(displayedScore);
+//   }
+// };
 
+const displayQuestion = function (object) {
+  // Clear background color
+  body.classList = "";
+  // Display new background color
+  body.classList.add(object.country);
+
+  // Generate new question
+  let question = document.createElement("section");
   question.innerHTML = `<h3 class="question">${object.question}</h3>`;
   question.classList.add("question-container");
   question.classList.add("selected");
-
   questionContainer.appendChild(question);
 
+  // Generate answer buttons
   let possibleAnswers = object.incorrect_answers;
   let correctAnswer = object.correct_answer;
   possibleAnswers.push(correctAnswer);
   shuffleArray(possibleAnswers);
-  console.log(possibleAnswers);
-
+  // console.log(possibleAnswers);
   for (i = 0; i < possibleAnswers.length; i++) {
     let newAnswer = document.createElement("button");
     newAnswer.innerText = possibleAnswers[i];
+    // newAnswer.classList.add("answer")
     newAnswer.classList.add("answer");
+    newAnswer.addEventListener("click", increaseScore);
     if (possibleAnswers[i] == correctAnswer) {
       newAnswer.classList.add("correct");
     }
-    questionContainer.appendChild(newAnswer);
-    console.log(newAnswer);
+    question.appendChild(newAnswer);
+    newAnswer.addEventListener("click", newQuestion);
+    // console.log(newAnswer);
   }
 };
 
@@ -190,8 +111,11 @@ const newQuestion = function () {
     questions.length,
     alreadyAskedQuestion
   );
+  // displayScore();
   displayQuestion(questions[questionNum]);
 };
+
+// let answers = document.getElementsByClassName("answer");
 
 const questions = [
   {
@@ -210,112 +134,68 @@ const questions = [
     correct_answer: "Brussells",
     incorrect_answers: ["Bruges", "Ghent", "Belgium City"],
   },
+  {
+    country: "france",
+    type: "multiple",
+    difficulty: "easy",
+    question: "What is the Capital of France?",
+    correct_answer: "Paris",
+    incorrect_answers: ["Marseilles", "Lyon", "France City"],
+  },
+  {
+    country: "spain",
+    type: "multiple",
+    difficulty: "easy",
+    question: "What is the Capital of Spain?",
+    correct_answer: "Madrid",
+    incorrect_answers: ["Valencia", "Barcelona", "Spain"],
+  },
+  {
+    country: "italy",
+    type: "multiple",
+    difficulty: "easy",
+    question: "What is the Capital of Italy?",
+    correct_answer: "Rome",
+    incorrect_answers: ["Milan", "Naples", "Italy City"],
+  },
+  {
+    country: "romania",
+    type: "multiple",
+    difficulty: "medium",
+    question: "What is the Capital of Romania?",
+    correct_answer: "Bucharest",
+    incorrect_answers: ["Budapest", "Brașov", "Romania City"],
+  },
+  {
+    country: "cameroon",
+    type: "multiple",
+    difficulty: "difficult",
+    question: "What is the Capital of Cameroon?",
+    correct_answer: "Yaoundé",
+    incorrect_answers: ["Bamenda", "Douala", "Cameroon City"],
+  },
+  {
+    country: "peru",
+    type: "multiple",
+    difficulty: "medium",
+    question: "What is the Capital of Peru?",
+    correct_answer: "Lima",
+    incorrect_answers: ["Bogota", "La Paz", "Peru City"],
+  },
+  {
+    country: "guatamala",
+    type: "multiple",
+    difficulty: "difficult",
+    question: "What is the Capital of Guatamala?",
+    correct_answer: "Guatamala City",
+    incorrect_answers: ["Quetzaltenango", "Antigua", "San Juan"],
+  },
+  {
+    country: "nigeria",
+    type: "multiple",
+    difficulty: "medium",
+    question: "What is the Capital of Nigeria?",
+    correct_answer: "Abuja",
+    incorrect_answers: ["Lagos", "Ibadan", "Benin City"],
+  },
 ];
-
-// {
-//     country: "belgium",
-//     type: "multiple",
-//     difficulty: "easy",
-//     question: "What is the Capital of Belgium?",
-//     correct_answer: "Brussells",
-//     incorrect_answers: [
-//       "Bruges",
-//       "Ghent",
-//       "Belgium City",
-//     ]
-//   },
-// {
-//     country: "france",
-//     type: "multiple",
-//     difficulty: "easy",
-//     question: "What is the Capital of France?",
-//     correct_answer: "Paris",
-//     incorrect_answers: [
-//       "Marseilles",
-//       "Lyon",
-//       "France City",
-//     ]
-//   },
-// {
-//     country: "spain",
-//     type: "multiple",
-//     difficulty: "easy",
-//     question: "What is the Capital of Spain?",
-//     correct_answer: "Madrid",
-//     incorrect_answers: [
-//       "Valencia",
-//       "Barcelona",
-//       "Spain",
-//     ]
-//   },
-// {
-//     country: "italy",
-//     type: "multiple",
-//     difficulty: "easy",
-//     question: "What is the Capital of Italy?",
-//     correct_answer: "Rome",
-//     incorrect_answers: [
-//       "Milan",
-//       "Naples",
-//       "Italy City",
-//     ]
-//   },
-// {
-//     country: "geography",
-//     type: "multiple",
-//     difficulty: "medium",
-//     question: "What is the Capital of Romania?",
-//     correct_answer: "Bucharest",
-//     incorrect_answers: [
-//       "Budapest",
-//       "Brașov",
-//       "Romania City",
-//     ]
-//   },
-// {
-//     country: "cameroon",
-//     type: "multiple",
-//     difficulty: "difficult",
-//     question: "What is the Capital of Cameroon?",
-//     correct_answer: "Yaoundé",
-//     incorrect_answers: [
-//       "Bamenda",
-//       "Douala",
-//       "Cameroon City",
-//     ]
-//   },
-// {
-//     country: "peru",
-//     type: "multiple",
-//     difficulty: "medium",
-//     question: "What is the Capital of Peru?",
-//     correct_answer: "Lima",
-//     incorrect_answers: [
-//       "Bogota",
-//       "La Paz",
-//       "Peru City",
-//     ]
-//   },
-// {
-//     country: "guatamala",
-//     type: "multiple",
-//     difficulty: "difficult",
-//     question: "What is the Capital of Guatamala?",
-//     correct_answer: "Guatamala City",
-//     incorrect_answers: [
-//       "Quetzaltenango",
-//       "Antigua",
-//       "San Juan",
-//     ]
-//   },
-//     country: "nigeria",
-//     type: "multiple",
-//     difficulty: "medium",
-//     question: "What is the Capital of Nigeria?",
-//     correct_answer: "Abuja",
-//     incorrect_answers: [
-//       "Lagos",
-//       "Ibadan",
-//       "Benin City",
-//     ]
-//   },
