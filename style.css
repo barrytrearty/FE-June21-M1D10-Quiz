@@ -1,15 +1,11 @@
 body {
-  /* background: linear-gradient(O.25turn, #00db71, #b65298, #00db71); */
-  background: linear-gradient(0.25turn, #00db71, #ebf8e1, #f69d3c);
-  /* background: linear-gradient(0.25turn, #00db71, black, #00db71); */
-  /* background: linear-gradient(0.25turn, #00db71, black, #00db71); */
+  background: #7b48b4;
   color: black;
   margin: auto;
   font-family: Fantasy;
 }
 
 .welcome {
-  /* background: #00db71; */
   background: #7b48b4;
 }
 
@@ -84,22 +80,9 @@ h3 {
   display: grid;
 }
 
-.question-container {
-  grid-row: 1;
-  grid-column: 1;
-}
-
 .hidden {
   visibility: hidden;
 }
-
-/* .question-container {
-  border-style: solid;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-wrap: wrap;
-} */
 
 button {
   /* margin-top: 20px; */
@@ -138,9 +121,4 @@ button:active {
 
 .game-over h3 {
   font-size: 100px;
-}
-
-button#see-score h3 {
-  margin: auto;
-  font-size: medium;
 }

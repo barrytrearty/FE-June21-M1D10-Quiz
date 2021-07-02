@@ -4,6 +4,8 @@ const body = document.getElementsByTagName("body")[0];
 const quizContainer = document.getElementById("quiz-container");
 const questionContainer = document.getElementById("grid-questions-container");
 const scoreDisp = document.getElementById("score");
+const choice = document.getElementById("choice");
+const difficulty = document.getElementById("difficulty");
 
 let score = 0;
 let questionCounter = 0;
@@ -32,10 +34,28 @@ const increaseScore = function () {
   scoreDisp.innerText = `Score: ${score}`;
 };
 
+// const revealDifficulty = function () {
+//   difficulty.classList.remove("hidden");
+// };
+
+// const easyDifficulty = function(){
+//   questions.slice(0,4)
+// }
+
+// const selectDifficulty = function (questionArray) {
+//   if ((choice.value = "easy")) {
+//     questionArray = questionArray.slice(0, 4);
+//     return questionArray;
+//   } else if ((choice.value = "medium")) {
+//     return (questionArray = questionArray.slice(0, 9));
+//   } else {
+//     return (questionArray = questionArray.slice(0, 10));
+//   }
+// };
+
 const displayQuestion = function (object) {
   // Clear background color
   body.classList = "";
-  // Display new background color
   body.classList.add(object.country);
 
   // Generate new question
@@ -78,21 +98,22 @@ const newQuestion = function () {
 
   if (questionCounter === 11) {
     gameOver();
+  } else {
+    let questionNum = generateUniqueNumber(
+      questions.length,
+      alreadyAskedQuestion
+    );
+    // displayScore();
+    displayQuestion(questions[questionNum]);
   }
-  let questionNum = generateUniqueNumber(
-    questions.length,
-    alreadyAskedQuestion
-  );
-  // displayScore();
-  displayQuestion(questions[questionNum]);
 };
 
 const gameOver = function () {
   body.classList = "";
-  body.classList.add("welcome");
+  // body.classList.add("welcome");
   quizContainer.innerHTML = "";
   let gameOverScreen = document.createElement("section");
-  gameOverScreen.innerHTML = `<h2>GAME OVER</h2> <h3>${score}/ ${
+  gameOverScreen.innerHTML = `<h2>GAME OVER</h2> <h3>${score}/${
     questionCounter - 1
   }</h3>`;
   gameOverScreen.classList.add("game-over");
@@ -100,14 +121,6 @@ const gameOver = function () {
 };
 
 const questions = [
-  {
-    country: "ireland",
-    type: "multiple",
-    difficulty: "medium",
-    question: "What is the Capital of Ireland?",
-    correct_answer: "Dublin",
-    incorrect_answers: ["Belfast", "Glasgow", "Edinburgh"],
-  },
   {
     country: "belgium",
     type: "multiple",
@@ -141,36 +154,20 @@ const questions = [
     incorrect_answers: ["Milan", "Naples", "Italy City"],
   },
   {
+    country: "ireland",
+    type: "multiple",
+    difficulty: "medium",
+    question: "What is the Capital of Ireland?",
+    correct_answer: "Dublin",
+    incorrect_answers: ["Belfast", "Glasgow", "Edinburgh"],
+  },
+  {
     country: "romania",
     type: "multiple",
     difficulty: "medium",
     question: "What is the Capital of Romania?",
     correct_answer: "Bucharest",
     incorrect_answers: ["Budapest", "Brașov", "Romania City"],
-  },
-  {
-    country: "cameroon",
-    type: "multiple",
-    difficulty: "difficult",
-    question: "What is the Capital of Cameroon?",
-    correct_answer: "Yaoundé",
-    incorrect_answers: ["Bamenda", "Douala", "Cameroon City"],
-  },
-  {
-    country: "peru",
-    type: "multiple",
-    difficulty: "medium",
-    question: "What is the Capital of Peru?",
-    correct_answer: "Lima",
-    incorrect_answers: ["Bogota", "La Paz", "Peru City"],
-  },
-  {
-    country: "guatamala",
-    type: "multiple",
-    difficulty: "difficult",
-    question: "What is the Capital of Guatamala?",
-    correct_answer: "Guatamala City",
-    incorrect_answers: ["Quetzaltenango", "Antigua", "San Juan"],
   },
   {
     country: "nigeria",
@@ -187,5 +184,30 @@ const questions = [
     question: "What is the Capital of Mexico?",
     correct_answer: "Mexico City",
     incorrect_answers: ["Guadalupe", "San Diego", "Buenas Aires"],
+  },
+
+  {
+    country: "peru",
+    type: "multiple",
+    difficulty: "medium",
+    question: "What is the Capital of Peru?",
+    correct_answer: "Lima",
+    incorrect_answers: ["Bogota", "La Paz", "Peru City"],
+  },
+  {
+    country: "cameroon",
+    type: "multiple",
+    difficulty: "difficult",
+    question: "What is the Capital of Cameroon?",
+    correct_answer: "Yaoundé",
+    incorrect_answers: ["Bamenda", "Douala", "Cameroon City"],
+  },
+  {
+    country: "guatamala",
+    type: "multiple",
+    difficulty: "difficult",
+    question: "What is the Capital of Guatamala?",
+    correct_answer: "Guatamala City",
+    incorrect_answers: ["Quetzaltenango", "Antigua", "San Juan"],
   },
 ];
