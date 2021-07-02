@@ -74,7 +74,7 @@ h3 {
   text-align: center;
 }
 
-.quiz-container {
+#quiz-container {
   width: 500px;
   margin: auto;
   margin-top: 100px;
@@ -132,11 +132,11 @@ button:active {
   box-shadow: -2px -3px black;
 }
 
-#game-over h2 {
+.game-over h2 {
   font-size: 50px;
 }
 
-#game-over h3 {
+.game-over h3 {
   font-size: 100px;
 }
 

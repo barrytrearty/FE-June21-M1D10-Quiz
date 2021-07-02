@@ -1,4 +1,14 @@
 // Use this to prevent generating same question twice
+
+const body = document.getElementsByTagName("body")[0];
+const quizContainer = document.getElementById("quiz-container");
+const questionContainer = document.getElementById("grid-questions-container");
+const scoreDisp = document.getElementById("score");
+
+let score = 0;
+let questionCounter = 0;
+let alreadyAskedQuestion = [];
+
 const generateUniqueNumber = function (num, array) {
   let randomNumber = Math.floor(Math.random() * num);
   while (array.includes(randomNumber)) {
@@ -17,56 +27,10 @@ function shuffleArray(array) {
   }
 }
 
-const welcomePage = document.getElementById("welcome-page");
-const body = document.getElementsByTagName("body")[0];
-const irelandQ = document.getElementById("irelandQ");
-const franceQ = document.getElementById("franceQ");
-const italyQ = document.getElementById("italyQ");
-const spainQ = document.getElementById("spainQ");
-const belgiumQ = document.getElementById("belgiumQ");
-const romaniaQ = document.getElementById("romaniaQ");
-const cameroonQ = document.getElementById("cameroonQ");
-const peruQ = document.getElementById("peruQ");
-const guatemalaQ = document.getElementById("guatemalaQ");
-const nigeriaQ = document.getElementById("nigeriaQ");
-const gameOver = document.getElementById("game-over");
-const seeScoreButton = document.getElementById("see-score");
-// const questionContainer = document.getElementById("grid-questions-container");
-const questionContainer = document.getElementById("grid-questions-container");
-
-let score = 0;
-
-const seeScore = function () {
-  seeScoreButton.remove();
-  const gameOverScore = document.createElement("h3");
-  gameOverScore.innerHTML = `${score} / 10`;
-  gameOver.appendChild(gameOverScore);
-};
-
-// const answerQ = function () { //1
-//   Q.classList.add("hidden"); //1
-//   .classList.remove("hidden"); //2
-//   body.classList.remove(""); //1
-//   body.classList.add(""); //2
-// };
-
-// let correctQuestionAnswer = document.getElementsByClassName("correct")[0]
-// correctQuestionAnswer.addEventListener("click", increaseScore)
-
 const increaseScore = function () {
   score++;
-  console.log(score);
+  scoreDisp.innerText = `Score: ${score}`;
 };
-
-// let displayScore = function () {
-//   let score = document.querySelector(".score");
-//   if (score) {
-//     let displayedScore = document.createElement("h2");
-//     displayedScore.classList.add("score");
-//     displayedScore.innerText = `Score: ${score}`;
-//     questionContainer.appendChild(displayedScore);
-//   }
-// };
 
 const displayQuestion = function (object) {
   // Clear background color
@@ -92,9 +56,10 @@ const displayQuestion = function (object) {
     newAnswer.innerText = possibleAnswers[i];
     // newAnswer.classList.add("answer")
     newAnswer.classList.add("answer");
-    newAnswer.addEventListener("click", increaseScore);
+
     if (possibleAnswers[i] == correctAnswer) {
       newAnswer.classList.add("correct");
+      newAnswer.addEventListener("click", increaseScore);
     }
     question.appendChild(newAnswer);
     newAnswer.addEventListener("click", newQuestion);
@@ -102,11 +67,18 @@ const displayQuestion = function (object) {
   }
 };
 
-let alreadyAskedQuestion = [];
-
 const newQuestion = function () {
+  questionCounter++;
+  console.log(questionCounter);
+  if (questionCounter > 1 && score > 0) {
+    scoreDisp.classList.remove("hidden");
+  }
   let currentlySelectedQuestion = document.querySelector(".selected");
   currentlySelectedQuestion.remove();
+
+  if (questionCounter === 11) {
+    gameOver();
+  }
   let questionNum = generateUniqueNumber(
     questions.length,
     alreadyAskedQuestion
@@ -115,7 +87,17 @@ const newQuestion = function () {
   displayQuestion(questions[questionNum]);
 };
 
-// let answers = document.getElementsByClassName("answer");
+const gameOver = function () {
+  body.classList = "";
+  body.classList.add("welcome");
+  quizContainer.innerHTML = "";
+  let gameOverScreen = document.createElement("section");
+  gameOverScreen.innerHTML = `<h2>GAME OVER</h2> <h3>${score}/ ${
+    questionCounter - 1
+  }</h3>`;
+  gameOverScreen.classList.add("game-over");
+  quizContainer.appendChild(gameOverScreen);
+};
 
 const questions = [
   {
@@ -197,5 +179,13 @@ const questions = [
     question: "What is the Capital of Nigeria?",
     correct_answer: "Abuja",
     incorrect_answers: ["Lagos", "Ibadan", "Benin City"],
+  },
+  {
+    country: "italy",
+    type: "multiple",
+    difficulty: "medium",
+    question: "What is the Capital of Mexico?",
+    correct_answer: "Mexico City",
+    incorrect_answers: ["Guadalupe", "San Diego", "Buenas Aires"],
   },
 ];
