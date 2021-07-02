@@ -153,10 +153,13 @@ const increaseScore = function () {
 };
 
 const displayQuestion = function (object) {
+  body.classList = "";
+  body.classList.add(object.country);
   let question = document.createElement("section");
 
   question.innerHTML = `<h3 class="question">${object.question}</h3>`;
   question.classList.add("question-container");
+  question.classList.add("selected");
 
   questionContainer.appendChild(question);
 
@@ -178,20 +181,39 @@ const displayQuestion = function (object) {
   }
 };
 
+let alreadyAskedQuestion = [];
+
+const newQuestion = function () {
+  let currentlySelectedQuestion = document.querySelector(".selected");
+  currentlySelectedQuestion.remove();
+  let questionNum = generateUniqueNumber(
+    questions.length,
+    alreadyAskedQuestion
+  );
+  displayQuestion(questions[questionNum]);
+};
+
 const questions = [
   {
-    category: "Geography",
+    country: "ireland",
     type: "multiple",
     difficulty: "medium",
     question: "What is the Capital of Ireland?",
     correct_answer: "Dublin",
     incorrect_answers: ["Belfast", "Glasgow", "Edinburgh"],
   },
+  {
+    country: "belgium",
+    type: "multiple",
+    difficulty: "easy",
+    question: "What is the Capital of Belgium?",
+    correct_answer: "Brussells",
+    incorrect_answers: ["Bruges", "Ghent", "Belgium City"],
+  },
 ];
 
-displayQuestion(questions[0]);
 // {
-//     category: "Geography",
+//     country: "belgium",
 //     type: "multiple",
 //     difficulty: "easy",
 //     question: "What is the Capital of Belgium?",
@@ -203,7 +225,7 @@ displayQuestion(questions[0]);
 //     ]
 //   },
 // {
-//     category: "Geography",
+//     country: "france",
 //     type: "multiple",
 //     difficulty: "easy",
 //     question: "What is the Capital of France?",
@@ -215,7 +237,7 @@ displayQuestion(questions[0]);
 //     ]
 //   },
 // {
-//     category: "Geography",
+//     country: "spain",
 //     type: "multiple",
 //     difficulty: "easy",
 //     question: "What is the Capital of Spain?",
@@ -227,7 +249,7 @@ displayQuestion(questions[0]);
 //     ]
 //   },
 // {
-//     category: "Geography",
+//     country: "italy",
 //     type: "multiple",
 //     difficulty: "easy",
 //     question: "What is the Capital of Italy?",
@@ -239,7 +261,7 @@ displayQuestion(questions[0]);
 //     ]
 //   },
 // {
-//     category: "Geography",
+//     country: "geography",
 //     type: "multiple",
 //     difficulty: "medium",
 //     question: "What is the Capital of Romania?",
@@ -251,7 +273,7 @@ displayQuestion(questions[0]);
 //     ]
 //   },
 // {
-//     category: "Geography",
+//     country: "cameroon",
 //     type: "multiple",
 //     difficulty: "difficult",
 //     question: "What is the Capital of Cameroon?",
@@ -263,7 +285,7 @@ displayQuestion(questions[0]);
 //     ]
 //   },
 // {
-//     category: "Geography",
+//     country: "peru",
 //     type: "multiple",
 //     difficulty: "medium",
 //     question: "What is the Capital of Peru?",
@@ -275,7 +297,7 @@ displayQuestion(questions[0]);
 //     ]
 //   },
 // {
-//     category: "Geography",
+//     country: "guatamala",
 //     type: "multiple",
 //     difficulty: "difficult",
 //     question: "What is the Capital of Guatamala?",
@@ -286,7 +308,7 @@ displayQuestion(questions[0]);
 //       "San Juan",
 //     ]
 //   },
-//     category: "Geography",
+//     country: "nigeria",
 //     type: "multiple",
 //     difficulty: "medium",
 //     question: "What is the Capital of Nigeria?",
