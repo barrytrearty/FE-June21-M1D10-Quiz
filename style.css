@@ -1,0 +1,78 @@
+body {
+  /* background: linear-gradient(O.25turn, #00db71, #b65298, #00db71); */
+  background: linear-gradient(0.25turn, #00db71, #ebf8e1, #f69d3c);
+  /* background: linear-gradient(0.25turn, #00db71, black, #00db71); */
+  /* background: linear-gradient(0.25turn, #00db71, black, #00db71); */
+  color: black;
+  margin: auto;
+  font-family: Fantasy;
+}
+
+.welcome {
+  background: #00db71;
+}
+
+.ireland {
+  background: linear-gradient(0.25turn, #00db71, #ebf8e1, #f69d3c);
+}
+
+h1 {
+  font-weight: lighter;
+  font-size: 60px;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 2px 3px rgba(255, 255, 255, 0.123);
+}
+
+h2 {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}
+
+.quiz-container {
+  width: 500px;
+  margin: auto;
+  margin-top: 100px;
+}
+
+/* .question-container {
+  border-style: solid;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+} */
+
+button {
+  /* margin-top: 20px; */
+  display: flex;
+  margin: auto;
+  width: 200px;
+  height: 50px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border-style: solid;
+  border-color: black;
+  box-shadow: 2px 3px black;
+  background-color: #8efbcf;
+  padding: 10px;
+  /* font-size: 1rem; */
+  font-size: 17px;
+  font-weight: bold;
+}
+
+button#start {
+  width: 500px;
+  margin-top: 50px;
+}
+
+button#start h3 {
+  margin: auto;
+}
+
+button:active {
+  box-shadow: -2px -3px black;
+}
